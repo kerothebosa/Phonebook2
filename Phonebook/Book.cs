@@ -91,7 +91,7 @@ namespace Phonebook
                 var UserInput4 = Console.ReadLine();
                 if (UserInput4 == "1")
                 {
-                    Console.WriteLine("Yarrağı bildiniz");
+                    
                 }
                
             }
