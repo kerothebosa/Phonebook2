@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace Phonebook
@@ -37,10 +37,10 @@ namespace Phonebook
                         var name = Console.ReadLine();
                         bool check = name.All(Char.IsLetter);
                         int nlen = name.Length;
-                        
-                        if (check == true && nlen != 0 )
+
+                        if (check == true && nlen != 0)
                         {
-                            
+
                         }
                         else
                         {
@@ -55,8 +55,26 @@ namespace Phonebook
                         bool check2 = surname.All(Char.IsLetter);
                         if (check2 == true && slen != 0)
                         {
-                         Book.Already(name,surname);
-                            
+                            if (Book.Already(name, surname))
+                            {
+                                Console.WriteLine("Numarayı güncellemek istiyor musunuz? (e/h)");
+                                var _respond = Console.ReadLine();
+                                if (_respond == "e")
+                                {
+                                    Console.WriteLine("Yeni numarayı girin: ");
+                                    var _number = Console.ReadLine();
+                                    Book.DeleteContact(name, surname, _number);
+                                    break;
+                                }
+                                else if (_respond == "h")
+                                {
+                                    break;
+                                }
+                                else
+                                    Console.WriteLine("Sadece e veya h harfini yazarak devam ediniz. Ana menüye geri döndünüz.");
+                                break;
+
+                            }
                         }
                         else
                         {
@@ -88,7 +106,7 @@ namespace Phonebook
 
 
                         break;
-                   
+
                     case "2":
 
                         Book.DisplayAll();
@@ -137,7 +155,7 @@ namespace Phonebook
 
                         break;
 
-                   
+
 
                     case "5":
                         Console.WriteLine("İsim için arama yapmak için 1");
@@ -167,7 +185,7 @@ namespace Phonebook
                     case "x":
 
                         return;
-                  
+
 
                     default:
                         Console.WriteLine("Doğru bir seçim yapmadınız");
